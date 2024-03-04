@@ -1,3 +1,5 @@
+import Loading from "./Loading";
+
 function HorizontalCards({ data }) {
   return (
     <div className="w-full text-white h-[40vh] pl-5 pr-5">
@@ -21,6 +23,7 @@ function HorizontalCards({ data }) {
             </p> */}
           </div>
         ))}
+        <Loading />
       </div>
     </div>
   );

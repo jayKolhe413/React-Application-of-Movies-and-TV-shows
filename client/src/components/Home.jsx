@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Sidenav from "./templates/Sidenav";
 import Topnav from "./templates/Topnav";
-import axios from "../utils/axios";
+import axios from "../utils/axios.jsx";
 import Header from "./templates/Header";
-import HorizontalCards from "./HorizontalCards";
+import HorizontalCards from "./templates/HorizontalCards";
 import DropDown from "./templates/DropDown";
 import Loading from "./templates/Loading";
 
@@ -28,9 +28,8 @@ function Home() {
 
   const getTrending = async () => {
     try {
-      console.log("Category:", category);
       const { data } = await axios.get(`/trending/${category}/day`);
-      console.log("Trending Data:", data);
+
       setTrending(data.results);
       setLoading(false); // Set loading to false when data is fetched
     } catch (error) {
@@ -39,18 +38,17 @@ function Home() {
   };
 
   useEffect(() => {
-    console.log("useEffect triggered");
     if (!wallpaper) {
       getHeader();
     }
-    // Introduce a delay before fetching trending data
+    // Introduce a delay before fetching trending data so it will create a delay
     const delay = setTimeout(() => {
       getTrending();
-    }, 5000); // 5000 milliseconds (5 seconds)
+    }, 3000);
 
     // Clear the timeout if the component unmounts or when the data is fetched
     return () => clearTimeout(delay);
-  }, [category, wallpaper]);
+  }, [category, wallpaper, trending]);
 
   return (
     <>

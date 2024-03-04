@@ -26,9 +26,9 @@ function Topnav() {
       <input
         onChange={(e) => setQuery(e.target.value)}
         value={query}
-        className="w-[50%] mx-5 p-3 bg-inherit text-white text-xl outline-none border-none"
+        className="w-[50%] mx-5 p-5  bg-inherit text-white text-xl outline-none border-none"
         type="text"
-        placeholder="search anything"
+        placeholder="Picturein "
       />
       {query.length > 0 && (
         <i

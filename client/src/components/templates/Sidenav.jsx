@@ -9,7 +9,10 @@ function Sidenav() {
         <span className="text-2xl">Video</span>
       </h1>
       <nav className="flex flex-col gap-1 text-xl text-zinc-400">
-        <Link className="hover:bg-[#6556CD] hover:text-white rounded-lg duration-300 p-5">
+        <Link
+          to="/trending"
+          className="hover:bg-[#6556CD] hover:text-white rounded-lg duration-300 p-5"
+        >
           <i className="ri-fire-fill"></i> Trending
         </Link>
         <Link className="hover:bg-[#6556CD] hover:text-white rounded-lg duration-300 p-5">

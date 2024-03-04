@@ -35,11 +35,11 @@ function Header({ data }) {
         {data.overview.slice(0, 200)} ...
         <Link className="text-blue-400">more</Link>
       </p>
-      <p className="mb-4">
-        <i className="text-yellow-600 ri-megaphone-fill"></i>
+      <p className="flex items-center mb-4 ">
+        <i className="text-2xl text-yellow-600 ri-megaphone-fill"></i>
         {data.release_date || "No information"}
-        <i className="ml-5 text-yellow-600 ri-album-fill"></i>
-        {data.media_type}
+        <i className="ml-5 mr-1 text-2xl text-yellow-600 ri-album-fill"></i>
+        {data.media_type.toUpperCase()}
       </p>
       <div className="">
         <Link className="bg-[#6556CD] p-4 rounded font-semibold mt-5 ">

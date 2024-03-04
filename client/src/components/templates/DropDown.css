@@ -32,7 +32,7 @@ select::-ms-expand {
 }
 
 .select::after {
-  content: "|";
+  content: "🔻";
   position: absolute;
   top: 0;
   right: 0;
@@ -40,9 +40,13 @@ select::-ms-expand {
   background: #27272a;
   cursor: pointer;
   pointer-events: none;
-  transition: 0.25s all ease;
+  transition: 0.6s all ease;
 }
 
 .select:hover::after {
   color: #6556cd;
+}
+
+option:hover {
+  background-color: #6556cd;
 }
