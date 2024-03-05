@@ -2,7 +2,7 @@ import Loading from "./Loading";
 
 function HorizontalCards({ data }) {
   return (
-    <div className="w-full text-white h-[40vh] pl-5 pr-5">
+    <div className="w-full px-[5%] text-white h-[40vh] pl-5 pr-5">
       <div className="flex overflow-auto w-[100%] h-[40vh]  ">
         {data.map((e, i) => (
           <div key={i} className="mr-5 relative  min-w-[15%] ">

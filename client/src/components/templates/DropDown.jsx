@@ -1,7 +1,9 @@
 import "./DropDown.css";
 
+// DropDown component
 function DropDown({ title, options, func }) {
   const handleSelectChange = (e) => {
+    console.log(e.target.value);
     func(e.target.value);
   };
 

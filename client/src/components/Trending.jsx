@@ -4,20 +4,26 @@ import DropDown from "./templates/DropDown";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Cards from "./templates/Cards";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Loading from "./templates/Loading";
+
 function Trending() {
   const n = useNavigate();
   const [category, setCategory] = useState("all");
   const [duration, setDuration] = useState("day");
   const [trending, setTrending] = useState(null);
 
+  const [page, setpage] = useState(1);
+
   const getTrending = async () => {
     try {
-      console.log("Category:", category);
       const { data } = await axios.get(
-        `https://api.themoviedb.org/3/trending/${category}/${duration}`
+        `https://api.themoviedb.org/3/trending/${category}/day`
       );
-
+      console.log(data);
       setTrending(data.results);
+      setTrending((prevState) => [...prevState, ...data.results]);
+      setpage(page + 1);
     } catch (error) {
       console.log(error);
     }
@@ -28,8 +34,8 @@ function Trending() {
 
   return (
     trending && (
-      <div className="w-screen h-screen overflow-hidden overflow-y-auto text-white">
-        <div className="w-full p-[4%] h-[10vh]  flex items-center">
+      <div className="w-screen h-screen  text-white">
+        <div className="w-full  h-[10vh]  flex items-center">
           <h1 className="text-2xl mr-[-7vw] font-semibold text-zinc-400">
             <i
               onClick={() => {
@@ -41,11 +47,26 @@ function Trending() {
           </h1>
 
           <Topnav />
-          <DropDown title="Category" options={["movie", "tv", "all"]} />
+          {/* <DropDown
+            title="Category"
+            func={(value) => setCategory(value)}
+            options={["movie", "tv", "all"]}
+          />
           <div className="w-[2%]"></div>
-          <DropDown title="Duration" options={["day", "week"]} />
+          <DropDown
+            title="Duration"
+            func={(value) => setDuration(value)}
+            options={["day", "week"]}
+          /> */}
         </div>
-        <Cards data={trending} />
+        <InfiniteScroll
+          dataLength={trending.length}
+          loader={<Loading />}
+          hasMore={true}
+          next={getTrending()}
+        >
+          <Cards data={trending} />
+        </InfiniteScroll>
       </div>
     )
   );
